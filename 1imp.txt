@@ -1,0 +1,30 @@
+mysql> create database college;
+mysql> create table student(
+    -> roll_no int,
+    -> name varchar(80),
+    -> city varchar(80),
+    -> course varchar(89),
+    -> admission_ date date);
+mysql> insert into student values
+    -> (101,'disha','jammu','mba','2023-10-12'),
+    -> (102,'karru','jammu','btech','2022-12-10'),
+    -> (103,'krishna','delhi','bba','2021-08-10'),
+    -> (104,'diuu','pune','bcom','2022-09-08');
+
+mysql> alter table student add column marks int;
+mysql> alter table student add marks int,add admission_date date ;
+mysql> update student set marks=90, admission_date='2023-10-02' where roll_no =101;
+
+mysql> alter table student drop column email;// for drop
+
+mysql> update student set marks = 90 where name= 'disha';
+mysql> update student set marks = 88 where name= 'karru';
+mysql> update student set marks = 80 where name= 'krishna';
+mysql> update student set marks = 99 where name= 'diuu';
+
+mysql> insert into student values
+    -> (105,'krish','mumbai','mba','2021-10-09',100);
+
+mysql> select*from student;
+mysql> delete from student where roll_no =105;
+mysql> delete from student where city  ='mumbai';
