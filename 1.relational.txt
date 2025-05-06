@@ -1,0 +1,58 @@
+mysql> CREATE DATABASE college;
+mysql> CREATE TABLE student(
+       roll_no INT,
+       name VARCHAR(90),
+       address VARCHAR(80),
+       admission_date DATE,
+       course VARCHAR(77)
+       );
+mysql> INSERT INTO student VALUES
+       (101,'Disha','Jammu','2024-10-04','MBA'),
+       (102,'kartik','Jammu','2024-02-04','MBA'),
+       (103,'sana','disney','2025-07-09','Mtech'),
+       (104,'dia','himachal','2022-09-09','Mtech');
+-- Add 'marks' column to support numeric operations
+ALTER TABLE student ADD COLUMN marks INT;
+
+-- Update marks for each student
+UPDATE student SET marks = 85 WHERE roll_no = 101;
+UPDATE student SET marks = 99 WHERE roll_no = 102;
+UPDATE student SET marks = 55 WHERE roll_no = 103;
+UPDATE student SET marks = 70 WHERE roll_no = 104;
+
+-- Relational operators
+SELECT * FROM student WHERE marks > 70;
+SELECT * FROM student WHERE marks < 90;
+SELECT * FROM student WHERE marks = 85;
+SELECT * FROM student WHERE marks != 55;
+
+-- logical operators
+SELECT * FROM student WHERE course = 'Mba' AND marks > 90;
+SELECT * FROM student WHERE course = 'Mtech' OR marks < 60;
+SELECT * FROM student WHERE NOT course = 'Mba';
+SELECT * FROM student WHERE city = 'Jammu' AND course = 'MBA';
+SELECT * FROM student WHERE city = 'Disney' OR marks < 60;
+
+-- Arithmetic operations
+SELECT name, marks + 5 AS increased_marks FROM student;
+SELECT name, marks * 2 AS double_marks FROM student;
+SELECT name, marks - 10 AS deducted_marks FROM student;
+
+-- Built-in functions
+SELECT COUNT(*) AS total_students FROM student;
+SELECT AVG(marks) AS average_marks FROM student;
+SELECT MAX(marks) AS max_marks FROM student;
+SELECT MIN(marks) AS min_marks FROM student;
+SELECT SUM(marks) AS total_marks FROM student;
+SELECT UPPER(name), LOWER(address) FROM student;
+SELECT LENGTH(name) AS name_length FROM student;
+SELECT CURDATE() AS today_date;
+SELECT YEAR(admission_date) AS admission_year FROM student;
+
+
+
+
+
+
+
+

@@ -1,0 +1,68 @@
+mysql> CREATE DATABASE college;
+mysql> USE college;
+
+
+CREATE TABLE student (
+    roll_no INT PRIMARY KEY,
+    name VARCHAR(50),
+    city VARCHAR(100),
+    admission_date DATE,
+    course VARCHAR(20),
+    marks INT
+);
+INSERT INTO student VALUES
+    (101,'Disha','Jammu','2024-10-04','MBA', 85),
+    (102,'Kartik','Jammu','2024-02-04','MBA', 99),
+    (103,'Sana','Disney','2025-07-09','Mtech', 55),
+    (104,'Dia','Himachal','2022-09-09','Mtech', 70);
+✅ STEP 2: Create Course Table (DDL)
+-- ======================
+
+DROP TABLE IF EXISTS course_details;
+CREATE TABLE course_details (
+    course_name VARCHAR(20) PRIMARY KEY,
+    duration_months INT,
+    total_fees INT
+);
+-- Insert records into course_details (DML)
+INSERT INTO course_details VALUES 
+    ('MBA', 24, 500000),
+    ('Mtech', 24, 600000),
+    ('Btech', 48, 400000);
+
+ ✅ STEP 3: Perform JOINs (DML SELECT)
+-- ======================
+-- 🔹 INNER JOIN: Students with matching course details//
+
+SELECT 
+    s.roll_no, s.name, s.course, c.duration_months, c.total_fees
+FROM 
+    student s
+INNER JOIN 
+    course_details c ON s.course = c.course_name;
+
+
+🔹 LEFT JOIN: All students + course details if matched//
+SELECT 
+    s.roll_no, s.name, s.course, c.duration_months, c.total_fees
+FROM 
+    student s
+LEFT JOIN 
+    course_details c ON s.course = c.course_name;
+
+-- 🔹 RIGHT JOIN: All courses + student info if matched
+SELECT 
+    s.roll_no, s.name, s.course, c.duration_months, c.total_fees
+FROM 
+    student s
+RIGHT JOIN 
+    course_details c ON s.course = c.course_name;
+
+-- 🔹 FULL OUTER JOIN simulation (MySQL workaround using UNION)
+SELECT 
+    s.roll_no, s.name, s.course, c.duration_months, c.total_fees
+FROM 
+    student s
+LEFT JOIN 
+    course_details c ON s.course = c.course_name;	
+

@@ -1,0 +1,52 @@
+mysql> CREATE DATABASE college;
+      
+mysql> USE college;
+CREATE TABLE student(
+       roll_no INT,
+       name VARCHAR(90),
+       address VARCHAR(80),
+       admission_date DATE,
+       course VARCHAR(77)
+       );
+mysql> INSERT INTO student VALUES
+       (101,'Disha','Jammu','2024-10-04','MBA'),
+       (102,'kartik','Jammu','2024-02-04','MBA'),
+       (103,'sana','disney','2025-07-09','Mtech'),
+       (104,'dia','himachal','2022-09-09','Mtech');
+
+-- Add 'marks' column to support numeric operations
+ALTER TABLE student ADD COLUMN marks INT;
+
+-- Update marks for each student
+UPDATE student SET marks = 85 WHERE roll_no = 101;
+UPDATE student SET marks = 99 WHERE roll_no = 102;
+UPDATE student SET marks = 55 WHERE roll_no = 103;
+UPDATE student SET marks = 70 WHERE roll_no = 104;
+
+ delete from student where roll_no=104;
+ select*from student; --it will show table
+
+✅ 1. Create Indexes
+-- Create an index on the 'marks' column
+CREATE INDEX idx_marks ON student(marks);
+
+-- Create an index on the 'course' column
+CREATE INDEX idx_course ON student(course);
+
+-- Create a composite index on 'city' and 'course' for faster multi-column filtering
+CREATE INDEX idx_city_course ON student(address, course);
+
+✅ 2. Use Indexes with Queries
+-- Query using indexed column 'marks'
+SELECT * FROM student WHERE marks > 70;
+
+-- Query using indexed column 'course'
+SELECT * FROM student WHERE course = 'MBA';
+
+-- Query using composite index on city and course
+SELECT * FROM student WHERE city = 'Jammu' AND course = 'MBA';
+✅ 3. View All Indexes
+
+SHOW INDEX FROM student;
+
+

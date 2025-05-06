@@ -1,0 +1,59 @@
+mysql> CREATE DATABASE college;
+      
+mysql> USE college;
+CREATE TABLE student(
+       roll_no INT,
+       name VARCHAR(90),
+       address VARCHAR(80),
+       admission_date DATE,
+       course VARCHAR(77)
+       );
+mysql> INSERT INTO student VALUES
+       (101,'Disha','Jammu','2024-10-04','MBA'),
+       (102,'kartik','Jammu','2024-02-04','MBA'),
+       (103,'sana','disney','2025-07-09','Mtech'),
+       (104,'dia','himachal','2022-09-09','Mtech');
+
+-- Add 'marks' column to support numeric operations
+ALTER TABLE student ADD COLUMN marks INT;
+
+-- Update marks for each student
+UPDATE student SET marks = 85 WHERE roll_no = 101;
+UPDATE student SET marks = 99 WHERE roll_no = 102;
+UPDATE student SET marks = 55 WHERE roll_no = 103;
+UPDATE student SET marks = 70 WHERE roll_no = 104;
+
+ delete from student where roll_no=104;
+ select*from student; --it will show table
+
+Group function+ group by////
+
+-- Count of students in each course//
+SELECT course, COUNT(*) AS student_count
+FROM student
+GROUP BY course;
+
+-- Average marks per course//
+SELECT course, AVG(marks) AS average_marks
+FROM student
+GROUP BY course;
+
+SELECT city, SUM(marks) AS total_marks
+FROM student
+GROUP BY city;
+
+ ORDER BY Clause/////
+-- List all students ordered by marks (highest to lowest)//
+SELECT * FROM student
+ORDER BY marks DESC;
+
+-- List students ordered by admission date (earliest first)//
+SELECT * FROM student
+ORDER BY admission_date ASC;
+
+-- List students ordered by course, then marks descending//
+SELECT * FROM student
+ORDER BY course, marks DESC;
+
+
+

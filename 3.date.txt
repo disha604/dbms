@@ -1,0 +1,33 @@
+mysql> CREATE DATABASE college;
+      USE college;
+mysql> CREATE TABLE student(
+       roll_no INT,
+       name VARCHAR(90),
+       address VARCHAR(80),
+       admission_date DATE,
+       course VARCHAR(77)
+       );
+mysql> INSERT INTO student VALUES
+       (101,'Disha','Jammu','2024-10-04','MBA'),
+       (102,'kartik','Jammu','2024-02-04','MBA'),
+       (103,'sana','disney','2025-07-09','Mtech'),
+       (104,'dia','himachal','2022-09-09','Mtech');
+   SELECT CURDATE();
+  SELECT CURRENT_DATE();
+  SELECT NOW();
+  SELECT CURTIME();
+  SELECT CURRENT_TIME();
+  SELECT SYSDATE();
+  SELECT YEAR(CURDATE());
+  SELECT MONTH(CURDATE());
+  SELECT DAY(CURDATE());
+  SELECT DAYNAME(CURDATE());
+  SELECT DAYOFMONTH(CURDATE());
+  SELECT DAYOFWEEK(CURDATE());
+  SELECT DAYOFYEAR(CURDATE());
+  SELECT DATE_FORMAT(CURDATE(), '%W, %D %M %Y');
+  SELECT TO_DAYS(CURDATE());
+  SELECT YEARWEEK(CURDATE());
+  SELECT TIMEDIFF(NOW(), '2024-01-01 00:00:00');
+  SELECT DATEDIFF(CURDATE(), '2023-01-01');
+  SELECT EXTRACT(YEAR FROM CURDATE());

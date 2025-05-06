@@ -1,0 +1,35 @@
+mysql> CREATE DATABASE college;
+      
+mysql> USE college;
+CREATE TABLE student(
+       roll_no INT,
+       name VARCHAR(90),
+       address VARCHAR(80),
+       admission_date DATE,
+       course VARCHAR(77)
+       );
+mysql> INSERT INTO student VALUES
+       (101,'Disha','Jammu','2024-10-04','MBA'),
+       (102,'kartik','Jammu','2024-02-04','MBA'),
+       (103,'sana','disney','2025-07-09','Mtech'),
+       (104,'dia','himachal','2022-09-09','Mtech');
+
+-- Add 'marks' column to support numeric operations
+ALTER TABLE student ADD COLUMN marks INT;
+
+-- Update marks for each student
+UPDATE student SET marks = 85 WHERE roll_no = 101;
+UPDATE student SET marks = 99 WHERE roll_no = 102;
+UPDATE student SET marks = 55 WHERE roll_no = 103;
+UPDATE student SET marks = 70 WHERE roll_no = 104;
+
+ delete from student where roll_no=104;
+ select*from student; --it will show table
+
+pattern matching//
+SELECT * FROM student WHERE name LIKE 'D%';
+SELECT * FROM student WHERE address LIKE '%u';
+SELECT * FROM student WHERE course LIKE '%tech%';
+SELECT * FROM student WHERE name LIKE '____';
+
+

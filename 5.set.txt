@@ -1,0 +1,35 @@
+mysql> CREATE DATABASE college;
+      USE college;
+mysql> CREATE TABLE student(
+       roll_no INT,
+       name VARCHAR(90),
+       address VARCHAR(80),
+       admission_date DATE,
+       course VARCHAR(77)
+       );
+mysql> INSERT INTO student VALUES
+       (101,'Disha','Jammu','2024-10-04','MBA'),
+       (102,'kartik','Jammu','2024-02-04','MBA'),
+       (103,'sana','disney','2025-07-09','Mtech'),
+       (104,'dia','himachal','2022-09-09','Mtech');
+
+SELECT name FROM student WHERE address = 'Jammu';
+SELECT name FROM student WHERE address = 'disney';
+
+SELECT name FROM student WHERE address = 'Jammu'
+UNION
+SELECT name FROM student WHERE address = 'disney';
+
+SELECT name FROM student WHERE address = 'Jammu'
+UNION ALL
+SELECT name FROM student WHERE address = 'disney';
+
+SELECT name FROM student
+WHERE address = 'Jammu'
+AND name IN (SELECT name FROM student WHERE address = 'disney'
+);
+
+SELECT name FROM student
+WHERE address = 'Jammu'
+AND name NOT IN ( SELECT name FROM student WHERE address = 'disney'
+);

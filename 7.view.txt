@@ -1,0 +1,35 @@
+mysql> CREATE DATABASE college;
+      USE college;
+mysql> CREATE TABLE student(
+       roll_no INT,
+       name VARCHAR(90),
+       address VARCHAR(80),
+       admission_date DATE,
+       course VARCHAR(77)
+       );
+mysql> INSERT INTO student VALUES
+       (101,'Disha','Jammu','2024-10-04','MBA'),
+       (102,'kartik','Jammu','2024-02-04','MBA'),
+       (103,'sana','disney','2025-07-09','Mtech'),
+       (104,'dia','himachal','2022-09-09','Mtech');
+
+-- Create a view for all MBA students
+CREATE VIEW mba_students AS
+SELECT * FROM student WHERE course = 'MBA';
+
+-- View all records from the view
+SELECT * FROM mba_students;
+
+-- Create a view showing only names and addresses of Mtech students
+CREATE VIEW mtech_basic AS
+SELECT name, address FROM student WHERE course = 'Mtech';
+
+-- Select from the mtech_basic view
+SELECT * FROM mtech_basic;
+
+-- Drop a view
+DROP VIEW mba_students;
+
+-- Alter a view (redefine it)
+CREATE OR REPLACE VIEW mtech_basic AS
+SELECT name, admission_date FROM student WHERE course = 'Mtech';
